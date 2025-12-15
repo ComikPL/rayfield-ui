@@ -103,9 +103,7 @@ SpeedPanel:AddSlider("WalkSpeed", {
         -- This function runs every time the slider value changes
         if Humanoid then
             Humanoid.WalkSpeed = value
-        end
-    end,
-    
+            
     local JumpPowerSlider = MainTab:CreateSlider({
     Name = "Jump Power Slider", -- Name of the slider
     Range = {0, 200}, -- Minimum and maximum range for the slider (default is 50)
@@ -118,6 +116,4 @@ SpeedPanel:AddSlider("WalkSpeed", {
         -- This function runs every time the slider value changes
         if humanoid then
             humanoid.JumpPower = Value
-        end
-    end,
 })
