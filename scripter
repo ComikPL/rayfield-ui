@@ -1,13 +1,13 @@
-📋
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
-local Window = Rayfield:CreateWindow({
-   Name = "Arrayfield Example Window",
-   LoadingTitle = "Arrayfield Interface Suite",
-   LoadingSubtitle = "by Arrays",
+ local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+
+local Window = Rayfield{
+   Name = "Rayfield",
+   LoadingTitle = "comik_pl's hub'",
+   LoadingSubtitle = "by Welt",
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Arrayfield"
+      FileName = "Rayfield"
    },
    Discord = {
       Enabled = false,
@@ -16,56 +16,28 @@ local Window = Rayfield:CreateWindow({
    },
    KeySystem = false, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Arrayfield",
+      Title = "comik_pl's rayfield",
       Subtitle = "Key System",
-      Note = "Join the discord (discord.gg/sirius)",
-      FileName = "SiriusKey",
+      Note = "Join the discord (discord.gg/yf65Urkhwv)",
+      FileName = "Key",
       SaveKey = false,
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = "Hello"
+      Key = "Weltshub"
    }
-})
+}
+CreateWindow(:)
 local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("Tab Example 2") -- Title, Image
 local Section = Tab:CreateSection("Section Example",false) -- The 2nd argument is to tell if its only a Title and doesnt contain element
 local Button = Tab:CreateButton({
-   Name = "Button Example",
-   Info = "Button info/Description.", -- Speaks for itself, Remove if none.
-   Interact = 'Changable',
+   Name = "Infinite Yield",
+   Info = "The Classic Universal admin.", -- Speaks for itself, Remove if none.
+   Interact = 'Press to load',
    Callback = function()
-   print('Pressed')
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
    end,
-})
-local Toggle = Tab:CreateToggle({
-   Name = "Toggle Example",
-   Info = "Toggle info/Description.", -- Speaks for itself, Remove if none.
-   CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-      print(Value)
-   end,
-})
-local ColorPicker = Tab:CreateColorPicker({
-	Name = "Color Picker",
-	Info = 'info or description',
-	Color = Color3.fromRGB(2,255,255),
-	Flag = "ColorPicker1", 
-	Callback = function(Value)
-		print(Value)
-	end
-})
-local Slider = Tab:CreateSlider({
-   Name = "Slider Example",
-   Info = "Button info/Description.",
-   Range = {0, 100},
-   Increment = 10,
-   Suffix = "Bananas",
-   CurrentValue = 10,
-   Flag = "Slider1", 
-   Callback = function(Value)
-      print(Value)
-   end,
-})
+
+
 local Section2 = Tab:CreateSection("Inputs Examples",true)
 Tab:CreateInput({
    Name = "Numbers Only",
@@ -118,101 +90,34 @@ local SingleSelection = Tab:CreateDropdown({
     print(Option)
    end,
 })
-local Label = Tab:CreateLabel("Thanks for using Arrayfield, there were alot of issues but here we are!",Section)
-local Paragraph = Tab:CreateParagraph({Title = "Paragraph Example", Content = "Paragraph Example"},Section)
-local Sets = Tab:CreateSection('Set Functions',false)
-local SButton
-SButton = Tab:CreateButton({
-   Name = "Button Example",
-   Interact = 'Interact',
-   SectionParent = Sets,
-   Callback = function()
-    SButton:Set(nil,'New Interaction')
-   end
-})
- Tab:CreateButton({
-   Name = "Dropdown Set",
-   Interact = 'Interact',
-   SectionParent = Sets,
-   Callback = function()
-   SingleSelection:Set('Option 1')
-   end
-})
 
-local LockTesting = Tab:CreateSection('Lockdown Section',false)
-local ToLock = {}
-Tab:CreateToggle({
-   Name = "Lockdown",
-   SectionParent = LockTesting,
-   Info = "Toggle info/Description.", -- Speaks for itself, Remove if none.
-   CurrentValue = false,
-   Callback = function(Value)
-    if Value then
-     for _,v in ToLock do
-     v:Lock('Locked')
-     end
-     else
-      for _,v in ToLock do
-          v:Unlock('Locked')
-       end
-    end
-   end,
-})
- ToLock.Button = Tab:CreateButton({
-   SectionParent = LockTesting,
-   Name = "Button Example",
-   Info = "Button info/Description.", -- Speaks for itself, Remove if none.
-   Interact = 'Interact',
-   Callback = function()
-   print('Pressed')
-   end,
-})
-ToLock.Toggle = Tab:CreateToggle({
-   SectionParent = LockTesting,
-   Name = "Toggle Example",
-   Info = "Toggle info/Description.", -- Speaks for itself, Remove if none.
-   CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-      print(Value)
-   end,
-})
-ToLock.ColorPicker = Tab:CreateColorPicker({
-	Name = "Color Picker",
-	Info = 'info or description',
-	SectionParent = LockTesting,
-	Color = Color3.fromRGB(2,255,255),
-	Flag = "ColorPicker1", 
-	Callback = function(Value)
-		print(Value)
-	end
-})
-ToLock.Slider = Tab:CreateSlider({
-   SectionParent = LockTesting,
-   Name = "Slider Example",
-   Info = "Button info/Description.",
-   Range = {0, 100},
-   Increment = 10,
-   Suffix = "Bananas",
-   CurrentValue = 10,
-   Flag = "Slider1", 
-   Callback = function(Value)
-      print(Value)
-   end,
+local characterstats= Tab:CreateSection("character stats",true)
+-- Add a slider to control character speed
+SpeedPanel:AddSlider("WalkSpeed", {
+    Min = 0,   -- Minimum speed value
+    Max = 100, -- Maximum speed value (adjust as needed)
+    Step = 1,  -- Increment step for the slider
+    Default = Humanoid.WalkSpeed or 16, -- Default speed, usually 16
+    Flag = "WalkSpeedSlider", -- A unique identifier for saving config
+    Callback = function(value)
+        -- This function runs every time the slider value changes
+        if Humanoid then
+            Humanoid.WalkSpeed = value
+        end
+    end,
+    
+    local JumpPowerSlider = MainTab:CreateSlider({
+    Name = "Jump Power Slider", -- Name of the slider
+    Range = {0, 200}, -- Minimum and maximum range for the slider (default is 50)
+    Increment = 1, -- How much the value changes with each step
+    Suffix = "Power", -- Text suffix for the value display
+    CurrentValue = 50, -- The default starting value
+    Flag = "JumpPowerSliderValue", -- A unique identifier for saving configuration (optional)
 
--- Create a tab for Movement
-local charactertab = Window:CreateTab("character")
-
--- Add a slider to the Movement tab to control character speed
-MovementTab:CreateSlider({
-    Name = "Walk Speed",
-    Min = 0,   -- Minimum speed (0 to stop movement)
-    Max = 100, -- Maximum speed (adjust as needed)
-    Default = 16, -- Default Roblox walk speed is 16
-    Decimal = 0, -- No decimals for speed value
-    ReleaseCall = false, -- Update speed continuously as slider moves
     Callback = function(Value)
-        -- Call the UpdateSpeed function with the slider's current value
-        UpdateSpeed(Value)
+        -- This function runs every time the slider value changes
+        if humanoid then
+            humanoid.JumpPower = Value
+        end
     end,
 })
